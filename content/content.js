@@ -26,7 +26,14 @@ function applyStyles(settings) {
     ytd-rich-grid-renderer {
       --ytd-rich-grid-items-per-row: ${settings.videosPerRow} !important;
     }
-    ytd-rich-item-renderer {
+
+    /* Video width — exclude items inside Shorts sections */
+    ytd-rich-item-renderer:not(
+      ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer,
+      ytd-reel-shelf-renderer ytd-rich-item-renderer,
+      ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) ytd-rich-item-renderer,
+      ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) ytd-rich-item-renderer
+    ) {
       width: ${videoWidth} !important;
       max-width: ${videoWidth} !important;
     }
@@ -39,10 +46,12 @@ function applyStyles(settings) {
       max-width: ${shortWidth} !important;
     }
 
-    /* Show/hide Shorts shelf */
+    /* Show/hide Shorts shelf — also hide parent section wrapper to avoid empty gap */
     ${!settings.showShorts ? `
     ytd-rich-shelf-renderer[is-shorts],
-    ytd-reel-shelf-renderer {
+    ytd-reel-shelf-renderer,
+    ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+    ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
       display: none !important;
     }` : ''}
   `;
