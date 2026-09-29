@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Grid Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <svg class="logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="YouTube Grid Pro">
+        <rect width="32" height="32" rx="7" fill="#1a1a1a"/>
+        <rect x="4" y="4" width="6" height="5" rx="1" fill="#4CAF50"/>
+        <rect x="13" y="4" width="6" height="5" rx="1" fill="#4CAF50"/>
+        <rect x="22" y="4" width="6" height="5" rx="1" fill="#4CAF50"/>
+        <rect x="4" y="12" width="6" height="5" rx="1" fill="#888"/>
+        <rect x="13" y="12" width="6" height="5" rx="1" fill="#888"/>
+        <rect x="22" y="12" width="6" height="5" rx="1" fill="#888"/>
+        <rect x="4" y="20" width="6" height="5" rx="1" fill="#555"/>
+        <rect x="13" y="20" width="6" height="5" rx="1" fill="#555"/>
+        <rect x="22" y="20" width="6" height="5" rx="1" fill="#555"/>
+      </svg>
+      <div class="title-block">
+        <h1>YouTube Grid Pro</h1>
+        <span class="version">v2.0.1</span>
+      </div>
+    </header>
+
+    <div class="field">
+      <label for="videosPerRow">Videos per row</label>
+      <div class="row">
+        <input type="range" id="videosPerRow" min="2" max="8" step="1">
+        <span class="val" id="videosPerRowVal">5</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="shortsPerRow">Shorts per row</label>
+      <div class="row">
+        <input type="range" id="shortsPerRow" min="4" max="12" step="1">
+        <span class="val" id="shortsPerRowVal">8</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="minWidth">Min. width (px)</label>
+      <div class="row">
+        <input type="range" id="minWidth" min="1280" max="5120" step="80">
+        <span class="val" id="minWidthVal">1800</span>
+      </div>
+    </div>
+
+    <div class="field toggle-field">
+      <label for="showShorts">Show Shorts shelf</label>
+      <label class="toggle">
+        <input type="checkbox" id="showShorts" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="actions">
+      <button id="save" class="btn-primary">Apply</button>
+      <button id="reset" class="btn-ghost">Reset</button>
+    </div>
+
+    <p class="hint">Active on youtube.com above the min. width.</p>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

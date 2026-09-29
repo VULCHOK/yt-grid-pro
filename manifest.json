@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "YouTube Grid Pro",
+  "version": "2.0.1",
+  "description": "Optimize YouTube home feed for ultrawide screens. Control videos per row, Shorts per row, and minimum activation width from the toolbar popup.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    },
+    "default_title": "YouTube Grid Pro",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["content/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "*://www.youtube.com/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "yt-grid-pro@vulchok",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
+}
